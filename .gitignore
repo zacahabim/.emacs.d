@@ -1,4 +1,5 @@
-elpa/**
 auto-save-list/**
+elpa/**
+undo/**
 recentf
 tramp

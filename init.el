@@ -16,6 +16,7 @@
 ;; undo-tree
 ;; package-install undo-tree
 (global-undo-tree-mode)
+(setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
 
 ;; ivy mode
 ;; package-install ivy
