@@ -32,6 +32,20 @@
 (global-set-key (kbd "C-c j") 'counsel-git-grep)
 (global-set-key (kbd "C-c r") 'counsel-rg)
 
+;; lsp-mode
+;; package-install lsp-mode
+;; package-install lsp-ui
+;; package-install lsp-ivy
+(setq lsp-keymap-prefix "C-c l")
+(require 'lsp-mode)
+(add-hook 'prog-mode-hook #'lsp-deferred)
+(lsp-ui-mode)
+(lsp-ivy-workspace-symbol)
+
+;; which-key
+;; package-install which-key
+(which-key-mode)
+
 ;; company mode
 ;; package-install company
 (add-hook 'after-init-hook 'global-company-mode)
@@ -57,7 +71,7 @@
  ;; If there is more than one, they won't work right.
  '(ispell-dictionary nil)
  '(package-selected-packages
-   '(undo-tree company counsel ivy nord-theme yaml-mode groovy-mode ##)))
+   '(which-key lsp-ivy lsp-ui lsp-mode undo-tree company counsel ivy nord-theme yaml-mode groovy-mode ##)))
 
 (cond ((my-system-type-is-darwin)
 (custom-set-faces
