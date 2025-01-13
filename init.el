@@ -10,18 +10,33 @@
 ;; -------------------------------------------------------------------
 
 ;; theme
-(load-theme 'solarized-dark t)
+;; package-install nord-theme
+(load-theme 'nord t)
 
-(add-to-list 'load-path "~/.emacs.d")
+;; ivy mode
+;; package-install ivy
+;; package-install counsel
+(ivy-mode)
+(setq ivy-use-virtual-buffers t)
+(setq enable-recursive-minibuffers t)
+(global-set-key (kbd "C-c g") 'counsel-git)
+(global-set-key (kbd "C-c j") 'counsel-git-grep)
+(global-set-key (kbd "C-c k") 'counsel-ag)
+(global-set-key (kbd "C-x l") 'counsel-locate)
+
+;; company mode
+;; package-install company
+(add-hook 'after-init-hook 'global-company-mode)
+
+;; load undo tree
+
+(add-to-list 'load-path "~/.emacs.d/elisp")
 (require 'sensible-defaults)
 (require 'some-configurations)
 
 (sensible-defaults/increase-gc-threshold)
 (sensible-defaults/show-matching-parens)
 (sensible-defaults/bind-home-and-end-keys)
-(sensible-defaults/bind-keys-to-change-text-size)
-
-
 
 ;;; Modify behaviors of delete
 (defun my-delete-word (arg)
@@ -62,27 +77,18 @@ This command does not push erased text to kill-ring."
 (global-set-key (kbd "C-k") 'my-delete-line)
 (global-set-key (kbd "C-S-k") 'my-delete-line-backward)
 
-;;; lsp-mode
-(use-package lsp-mode
-  :init
-  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-  (setq lsp-keymap-prefix "C-c l")
-  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-         (python-mode . lsp)
-         ;; if you want which-key integration
-         (lsp-mode . lsp-enable-which-key-integration))
-  :commands lsp)
-
 ;;; Configurations saved the GUI
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(solarized-theme ##)))
+ '(ispell-dictionary nil)
+ '(package-selected-packages
+   '(company counsel ivy nord-theme yaml-mode groovy-mode solarized-theme ##)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "JetBrainsMono Nerd Font" :foundry "nil" :slant normal :weight regular :height 140 :width normal)))))
+ '(default ((t (:family "JetBrainsMono Nerd Font" :foundry "nil" :slant normal :weight regular :height 110 :width normal)))))
