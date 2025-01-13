@@ -10,7 +10,7 @@
 (global-set-key (kbd "M-<up>") '(lambda () (interactive) (previous-line 5)))
 
 ;;; Confirm before exit
-(setq confirm-kill-emacs 'y-or-n-p)
+(setq confirm-kill-emacs 'yes-or-no-p)
 
 ;;; no backup files
 (setq make-backup-files nil)
