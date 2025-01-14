@@ -18,4 +18,7 @@
 ;;; display fill column
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
 
+;;; whitespace-mode
+(add-hook 'prog-mode-hook #'whitespace-mode)
+
 (provide 'some-configurations)

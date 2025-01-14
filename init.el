@@ -62,6 +62,7 @@
 (sensible-defaults/show-matching-parens)
 (sensible-defaults/use-all-keybindings)
 (sensible-defaults/delete-trailing-whitespace)
+(sensible-defaults/treat-camelcase-as-separate-words)
 
 ;;; Configurations saved the GUI
 (custom-set-variables
