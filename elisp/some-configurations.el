@@ -19,6 +19,19 @@
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
 
 ;;; whitespace-mode
-(add-hook 'prog-mode-hook #'whitespace-mode)
+;; (add-hook 'prog-mode-hook #'whitespace-mode)
+
+;; disable indent
+(setq-default indent-tabs-mode nil)
+
+;; move focus on new splittig window
+
+(defadvice split-window (after move-point-to-new-window activate)
+  "Moves the point to the newly created window after splitting."
+  (other-window 1))
+
+;; stop emacs from splitting the window
+(setq split-height-threshold nil
+      split-width-threshold nil)
 
 (provide 'some-configurations)
