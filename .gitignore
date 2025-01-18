@@ -3,3 +3,7 @@ elpa/**
 undo/**
 recentf
 tramp
+eln-cache
+eshell
+transient
+projectile-bookmarks.eld
