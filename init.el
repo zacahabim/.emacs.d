@@ -9,9 +9,11 @@
 (package-initialize)
 ;; -------------------------------------------------------------------
 
+(add-to-list 'exec-path (expand-file-name "~/.local/bin"))
+
 ;; theme
-;; package-install solo-jazz-theme
-(load-theme 'solo-jazz t)
+;; package-install nord-theme
+(load-theme 'nord t)
 
 ;;; undo-tree
 ;; package-install undo-tree
@@ -29,8 +31,8 @@
 (global-set-key (kbd "<f6>") 'ivy-resume)
 (global-set-key (kbd "C-c c j") 'counsel-file-jump)
 (global-set-key (kbd "C-c g f") 'counsel-git)
-(global-set-key (kbd "C-c g g") 'counsel-git-grep)
-(global-set-key (kbd "C-c r g") 'counsel-rg)
+(global-set-key (kbd "C-c g g") 'vc-git-grep)
+(global-set-key (kbd "C-c r r") 'rg)
 
 ;; eglot
 (add-hook 'prog-mode-hook 'eglot-ensure)
@@ -65,7 +67,7 @@
   (corfu-on-exact-match nil)      ; Don't auto expand tempel snippets
   ;; Optionally use TAB for cycling, default is `corfu-complete'.
   :init
-  (global-corfu-mode)
+  ;; (global-corfu-mode)
   (corfu-history-mode)
   (corfu-popupinfo-mode)) ; Popup completion info
 
@@ -90,11 +92,12 @@
   ;; Ensure that pcomplete does not write to the buffer
   ;; and behaves as a pure `completion-at-point-function'.
   (advice-add 'pcomplete-completions-at-point :around #'cape-wrap-purify)
-  
   (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
   (advice-add 'eglot-completion-at-point :around #'cape-wrap-noninterruptible)
 )
 
+;; package-install company
+(global-company-mode)
 
 ;; install envrc
 ;; package-install envrc
@@ -112,6 +115,7 @@
 
 ;; ripgrep
 ;; package-install ripgrep
+;; package-install rg
 (require 'rg)
 
 
@@ -136,10 +140,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("fee7287586b17efbfda432f05539b58e86e059e78006ce9237b8732fde991b4c" default))
+   '("98b4ef49c451350c28a8c20c35c4d2def5d0b8e5abbc962da498c423598a1cdd" "fee7287586b17efbfda432f05539b58e86e059e78006ce9237b8732fde991b4c" default))
  '(ispell-dictionary nil)
  '(package-selected-packages
-   '(rg pyenv-mode auto-virtualenvwrapper projectile auto-virtualenv cape corfu envrc flymake magit which-key lsp-ivy lsp-ui lsp-mode undo-tree counsel ivy yaml-mode groovy-mode ##)))
+   '(ripgrep nord-theme company rg pyenv-mode auto-virtualenvwrapper projectile auto-virtualenv cape corfu envrc flymake magit which-key lsp-ivy lsp-ui lsp-mode undo-tree counsel ivy yaml-mode groovy-mode ##)))
 
 (cond ((my-system-type-is-darwin)
 (custom-set-faces
