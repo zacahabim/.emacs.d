@@ -9,6 +9,9 @@
 (global-set-key (kbd "M-<down>") '(lambda () (interactive) (next-line  5)))
 (global-set-key (kbd "M-<up>") '(lambda () (interactive) (previous-line 5)))
 
+;; Rebinding the transpose keybindings because Ctrl-t is tmux prefix
+(global-set-key (kbd "C-ö") #'transpose-chars)
+
 ;;; Confirm before exit
 (setq confirm-kill-emacs 'yes-or-no-p)
 

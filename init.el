@@ -3,6 +3,7 @@
 ;; -------------------------------------------------------------------
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+
 ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
 ;; and `package-pinned-packages`. Most users will not need or want to do this.
 ;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
@@ -10,6 +11,12 @@
 ;; -------------------------------------------------------------------
 
 (add-to-list 'exec-path (expand-file-name "~/.local/bin"))
+
+;; enable mouse usage in terminal
+(xterm-mouse-mode)
+
+;; package-install clipetty
+(global-clipetty-mode)
 
 ;; theme
 ;; package-install nord-theme
@@ -29,7 +36,9 @@
 
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
 (global-set-key (kbd "<f6>") 'ivy-resume)
-(global-set-key (kbd "C-c c j") 'counsel-file-jump)
+
+;; fuzzy search files
+(global-set-key (kbd "C-c f f") 'counsel-file-jump)
 (global-set-key (kbd "C-c g f") 'counsel-git)
 (global-set-key (kbd "C-c g g") 'vc-git-grep)
 (global-set-key (kbd "C-c r r") 'rg)
@@ -143,18 +152,18 @@
    '("98b4ef49c451350c28a8c20c35c4d2def5d0b8e5abbc962da498c423598a1cdd" "fee7287586b17efbfda432f05539b58e86e059e78006ce9237b8732fde991b4c" default))
  '(ispell-dictionary nil)
  '(package-selected-packages
-   '(ripgrep nord-theme company rg pyenv-mode auto-virtualenvwrapper projectile auto-virtualenv cape corfu envrc flymake magit which-key lsp-ivy lsp-ui lsp-mode undo-tree counsel ivy yaml-mode groovy-mode ##)))
+   '(term-keys smooth-scrolling clipetty ripgrep nord-theme company rg pyenv-mode auto-virtualenvwrapper projectile auto-virtualenv cape corfu envrc flymake magit which-key lsp-ivy lsp-ui lsp-mode undo-tree counsel ivy yaml-mode groovy-mode ##)))
 
 (cond ((my-system-type-is-darwin)
 (custom-set-faces
- '(default ((t (:family "JetBrainsMono Nerd Font" :foundry "nil" :slant normal :weight regular :height 150 :width normal)))))
+ '(default ((t (:family "GoMono Nerd Font Mono" :foundry "nil" :slant normal :weight regular :height 150 :width normal)))))
 ) (t
     (custom-set-faces
-      '(default ((t (:famnily "JetBrainsMono Nerd Font" :foundry "nil" :slant normal :weight regular :height 110 :width normal)))))
+      '(default ((t (:family "GoMono Nerd Font Mono" :foundry "nil" :slant normal :weight regular :height 120 :width normal)))))
 ))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:famnily "JetBrainsMono Nerd Font" :foundry "nil" :slant normal :weight regular :height 120 :width normal)))))
+ '(default ((t (:family "GoMono Nerd Font Mono" :foundry "nil" :slant normal :weight regular :height 120 :width normal)))))
