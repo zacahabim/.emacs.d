@@ -12,6 +12,21 @@
 
 (add-to-list 'exec-path (expand-file-name "~/.local/bin"))
 
+(add-to-list 'load-path "~/.emacs.d/elisp")
+(require 'terminal-key-mappings)
+(require 'some-configurations)
+(require 'check-my-system-type)
+(require 'delete-no-kill-ring)
+(require 'pyvenv)
+(require 'dockerfile-mode)
+
+(require 'sensible-defaults)
+(sensible-defaults/increase-gc-threshold)
+(sensible-defaults/show-matching-parens)
+(sensible-defaults/use-all-keybindings)
+(sensible-defaults/delete-trailing-whitespace)
+(sensible-defaults/treat-camelcase-as-separate-words)
+
 ;; enable mouse usage in terminal
 (xterm-mouse-mode)
 
@@ -126,21 +141,6 @@
 ;; package-install ripgrep
 ;; package-install rg
 (require 'rg)
-
-
-(add-to-list 'load-path "~/.emacs.d/elisp")
-(require 'some-configurations)
-(require 'check-my-system-type)
-(require 'delete-no-kill-ring)
-(require 'pyvenv)
-(require 'dockerfile-mode)
-
-(require 'sensible-defaults)
-(sensible-defaults/increase-gc-threshold)
-(sensible-defaults/show-matching-parens)
-(sensible-defaults/use-all-keybindings)
-(sensible-defaults/delete-trailing-whitespace)
-(sensible-defaults/treat-camelcase-as-separate-words)
 
 ;;; Configurations saved the GUI
 (custom-set-variables
