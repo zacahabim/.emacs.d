@@ -24,39 +24,59 @@
 (sensible-defaults/increase-gc-threshold)
 (sensible-defaults/show-matching-parens)
 (sensible-defaults/use-all-keybindings)
-(sensible-defaults/delete-trailing-whitespace)
 (sensible-defaults/treat-camelcase-as-separate-words)
+(sensible-defaults/delete-trailing-whitespace)
 
 ;; enable mouse usage in terminal
 (xterm-mouse-mode)
 
 ;; package-install clipetty
-(global-clipetty-mode)
+(use-package clipetty
+  :ensure t
+  :config
+  (global-clipetty-mode)
+  )
 
 ;; theme
 ;; package-install nord-theme
-(load-theme 'nord t)
+(use-package nord-theme
+  :ensure t
+  :config
+  (load-theme 'nord t)
+  )
 
 ;;; undo-tree
 ;; package-install undo-tree
-(global-undo-tree-mode)
-(setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+(use-package undo-tree
+  :ensure t
+  :init
+  (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+  :config
+  (global-undo-tree-mode)
+  )
 
 ;; ivy mode
 ;; package-install ivy
 ;; package-install counsel
-(ivy-mode)
-(setq ivy-use-virtual-buffers t)
-(setq enable-recursive-minibuffers t)
-
-(global-set-key (kbd "C-c C-r") 'ivy-resume)
-(global-set-key (kbd "<f6>") 'ivy-resume)
-
-;; fuzzy search files
-(global-set-key (kbd "C-c f f") 'counsel-file-jump)
-(global-set-key (kbd "C-c g f") 'counsel-git)
-(global-set-key (kbd "C-c g g") 'vc-git-grep)
-(global-set-key (kbd "C-c r r") 'rg)
+(use-package counsel
+  :ensure t
+  )
+(use-package ivy
+  :ensure t
+  :init
+  (setq ivy-use-virtual-buffers t)
+  (setq enable-recursive-minibuffers t)
+  :config
+  (ivy-mode)
+  :bind
+  (
+   ("C-c C-r" . ivy-resume)
+   ("<f6>" . ivy-resume)
+   ("C-c f f" . counsel-file-jump)
+   ("C-c g f" . counsel-git)
+   ("C-c g g" . vc-git-grep)
+  )
+)
 
 ;; eglot
 (add-hook 'prog-mode-hook 'eglot-ensure)
@@ -121,26 +141,49 @@
 )
 
 ;; package-install company
-(global-company-mode)
+(use-package company
+  :ensure t
+  :config
+  (global-company-mode)
+  )
 
 ;; install envrc
 ;; package-install envrc
-(envrc-global-mode)
+(use-package envrc
+  :ensure t
+  :config
+  (envrc-global-mode)
+  )
 
 ;; which-key
 ;; package-install which-key
-(which-key-mode)
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode)
+  )
 
 ;; magit
 ;; package-install magit
-(setq magit-blame-echo-style 'headings)
-(global-set-key (kbd "C-c g b") 'magit-blame)
-(global-set-key (kbd "C-c g s") 'magit)
+(use-package magit
+  :ensure t
+  :init
+  (setq magit-blame-echo-style 'headings)
+  :bind
+  (
+   ("C-c g b" . magit-blame)
+   ("C-c g s" . magit)
+   )
+  )
 
 ;; ripgrep
-;; package-install ripgrep
 ;; package-install rg
-(require 'rg)
+(use-package rg
+  :ensure t
+  :bind
+  ("C-c r r" . rg)
+  )
+
 
 ;;; Configurations saved the GUI
 (custom-set-variables
