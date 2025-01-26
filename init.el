@@ -92,7 +92,7 @@
        (eglot-code-actions nil nil "source.organizeImports" t))
 
 (add-hook 'before-save-hook 'my-eglot-organize-imports nil t)
-(add-hook 'before-save-hook 'eglot-format-buffer)
+;; (add-hook 'before-save-hook 'eglot-format-buffer)
 
 ;; Add extensions
 ;; pacakge-install corfu
