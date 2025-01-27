@@ -184,6 +184,13 @@
   ("C-c r r" . rg)
   )
 
+;; markdown-mode
+;; disable this to navigate with M-p and M-p
+(add-hook 'markdown-mode-hook
+          (lambda()
+            (local-unset-key (kbd "M-n"))
+            (local-unset-key (kbd "M-p"))
+            ))
 
 ;;; Configurations saved the GUI
 (custom-set-variables
