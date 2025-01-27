@@ -18,6 +18,9 @@
 ;;; no backup files
 (setq make-backup-files nil)
 
+;;; no autosave
+(setq auto-save-default nil)
+
 ;;; display fill column
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
 
