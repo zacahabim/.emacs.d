@@ -32,10 +32,15 @@ This command does not push erased text to kill-ring."
     (setq x2 (point))
     (delete-region x1 x2)))
 
-; Here's the code to bind them emacs's default shortcut keys:
+;;; Here's the code to bind them emacs's default shortcut keys:
 (global-set-key (kbd "M-d") 'my-delete-word)
 (global-set-key (kbd "<M-backspace>") 'my-backward-delete-word)
 (global-set-key (kbd "C-k") 'my-delete-line)
 (global-set-key (kbd "C-S-k") 'my-delete-line-backward)
+
+;;; Read keysequence with the command below in terminal
+;;; (format-kbd-macro (read-key-sequence "Key? " nil t))
+(global-set-key (kbd "ESC d") 'my-delete-word)
+(global-set-key (kbd "ESC DEL") 'my-backward-delete-word)
 
 (provide 'delete-no-kill-ring)
