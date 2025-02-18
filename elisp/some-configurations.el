@@ -12,6 +12,9 @@
 ;; Rebinding the transpose keybindings because Ctrl-t is tmux prefix
 (global-set-key (kbd "C-ö") #'transpose-chars)
 
+;; faster to pop mark
+(global-set-key (kbd "C-c p") #'pop-global-mark)
+
 ;;; Confirm before exit
 (setq confirm-kill-emacs 'yes-or-no-p)
 
