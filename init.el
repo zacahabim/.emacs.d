@@ -20,6 +20,7 @@
 (require 'pyvenv)
 (require 'dockerfile-mode)
 (require 'display-buffer-configurations)
+(require 'global-mark-navigation)
 
 (require 'sensible-defaults)
 (sensible-defaults/increase-gc-threshold)
