@@ -19,6 +19,7 @@
 (require 'delete-no-kill-ring)
 (require 'pyvenv)
 (require 'dockerfile-mode)
+(require 'display-buffer-configurations)
 
 (require 'sensible-defaults)
 (sensible-defaults/increase-gc-threshold)

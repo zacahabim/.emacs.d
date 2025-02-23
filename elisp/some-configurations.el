@@ -12,9 +12,6 @@
 ;; Rebinding the transpose keybindings because Ctrl-t is tmux prefix
 (global-set-key (kbd "C-ö") #'transpose-chars)
 
-;; faster to pop mark
-(global-set-key (kbd "C-c p") #'pop-global-mark)
-
 ;;; Confirm before exit
 (setq confirm-kill-emacs 'yes-or-no-p)
 
@@ -32,15 +29,5 @@
 
 ;; disable indent
 (setq-default indent-tabs-mode nil)
-
-;; move focus on new splittig window
-
-(defadvice split-window (after move-point-to-new-window activate)
-  "Moves the point to the newly created window after splitting."
-  (other-window 1))
-
-;; stop emacs from splitting the window
-(setq split-height-threshold nil
-      split-width-threshold nil)
 
 (provide 'some-configurations)
