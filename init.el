@@ -171,10 +171,18 @@
   (which-key-mode)
   )
 
+;; version control
+
+;; diff-hl
+(use-package diff-hl
+  :config
+  (global-diff-hl-mode))
+
 ;; magit
 ;; package-install magit
 (use-package magit
   :ensure t
+  :defer t
   :init
   (setq magit-blame-echo-style 'headings)
   :bind
@@ -182,6 +190,9 @@
    ("C-c g b" . magit-blame)
    ("C-c g s" . magit)
    )
+  :hook
+  ((magit-pre-refresh  . diff-hl-magit-pre-refresh)
+   (magit-post-refresh . diff-hl-magit-post-refresh))
   )
 
 ;; ripgrep
