@@ -47,11 +47,23 @@
 
 ;; theme
 ;; package-install nord-theme
-(use-package nord-theme
+;; (use-package nord-theme
+;;   :ensure t
+;;   :config
+;;   (load-theme 'nord t)
+;;   )
+
+(use-package monokai-theme
   :ensure t
   :config
-  (load-theme 'nord t)
+  (load-theme 'monokai t)
   )
+
+(set-face-attribute 'menu nil
+                    :inverse-video nil
+                    :background "pink"
+                    :foreground "blue"
+                    :bold t)
 
 ;;; undo-tree
 ;; package-install undo-tree
@@ -222,7 +234,7 @@
    '("98b4ef49c451350c28a8c20c35c4d2def5d0b8e5abbc962da498c423598a1cdd" "fee7287586b17efbfda432f05539b58e86e059e78006ce9237b8732fde991b4c" default))
  '(ispell-dictionary nil)
  '(package-selected-packages
-   '(term-keys smooth-scrolling clipetty ripgrep nord-theme company rg pyenv-mode auto-virtualenvwrapper projectile auto-virtualenv cape corfu envrc flymake magit which-key lsp-ivy lsp-ui lsp-mode undo-tree counsel ivy yaml-mode groovy-mode ##)))
+   '(term-keys smooth-scrolling clipetty ripgrep company rg pyenv-mode auto-virtualenvwrapper projectile auto-virtualenv cape corfu envrc flymake magit which-key lsp-ivy lsp-ui lsp-mode undo-tree counsel ivy yaml-mode groovy-mode ##)))
 
 (cond ((my-system-type-is-darwin)
 (custom-set-faces
