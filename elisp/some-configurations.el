@@ -30,4 +30,10 @@
 ;; disable indent
 (setq-default indent-tabs-mode nil)
 
+;; dired less verbose
+;; https://emacs.stackexchange.com/questions/45383/dired-hide-details-show-size-and-date
+(require 'ls-lisp)
+(setq ls-lisp-use-insert-directory-program nil)
+(setq ls-lisp-verbosity nil)
+
 (provide 'some-configurations)
