@@ -224,6 +224,75 @@
             (local-unset-key (kbd "M-p"))
             ))
 
+;; typescript/javascript copied from https://github.com/SophieBosio/.emacs.d/blob/main/init.org
+(use-package tide
+  :ensure t
+  :after (typescript-mode flycheck)
+  :hook ((typescript-mode    . tide-setup)
+         (tsx-ts-mode        . tide-setup)
+         (typescript-ts-mode . tide-hl-identifier-mode)))
+
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1))
+
+(use-package typescript-mode
+  :ensure t
+  :defer t
+  :mode (("\\.js\\'"   . typescript-mode)
+         ("\\.jsx\\'"  . typescript-mode)
+         ("\\.ts\\'"   . typescript-mode)
+         ("\\.tsx\\'"  . typescript-mode))
+  :hook (typescript-mode . setup-tide-mode)
+  :config
+  (setq typescript-indent-level 2))
+
+(use-package web-mode
+  :ensure t
+  :defer t
+  :mode ("\\.html\\'" . web-mode)
+  :hook (web-mode . setup-tide-mode)
+  :config
+  (flycheck-add-mode 'typescript-tslint 'web-mode)
+  (setq web-mode-markup-indent-offset 2
+        web-mode-code-indent-offset   2
+        web-mode-css-indent-offset    2))
+
+(use-package rjsx-mode
+  :ensure t
+  :defer t
+  :mode "components\\/.*\\.js\\'")
+
+(use-package js2-mode
+  :ensure t
+  :mode "\\.js\\'"
+  :interpreter "node"
+  :config
+  (setq js2-basic-offset 2))
+
+(use-package xref-js2
+  :ensure t
+  :after js2-mode
+  :config
+  (define-key js2-mode-map (kbd "M-.") nil)
+  (add-hook 'js2-mode-hook
+            (lambda () (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
+  (setq xref-js2-search-program 'rg)
+  (define-key js2-mode-map (kbd "M-.") 'xref-find-definitions)
+  (define-key js2-mode-map (kbd "M-,") 'xref-pop-marker-stack))
+
+(use-package import-js
+  :ensure t
+  :hook ((js-mode . run-import-js)
+         (typescript-mode . run-import-js))
+  :config
+  (defun run-import-js ()
+    (add-hook 'after-save-hook 'import-js-fix nil t)))
+
 ;;; Configurations saved the GUI
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
