@@ -293,21 +293,13 @@
   (defun run-import-js ()
     (add-hook 'after-save-hook 'import-js-fix nil t)))
 
-;;; Configurations saved the GUI
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("98b4ef49c451350c28a8c20c35c4d2def5d0b8e5abbc962da498c423598a1cdd" "fee7287586b17efbfda432f05539b58e86e059e78006ce9237b8732fde991b4c" default))
- '(ispell-dictionary nil)
- '(package-selected-packages
-   '(term-keys smooth-scrolling clipetty ripgrep company rg pyenv-mode auto-virtualenvwrapper projectile auto-virtualenv cape corfu envrc flymake magit which-key lsp-ivy lsp-ui lsp-mode undo-tree counsel ivy yaml-mode groovy-mode ##)))
+;; To tell emacs that I know what I am doing, thus don't create
+;; the custom theme crap
+(setq custom-safe-themes t)
 
 (cond ((my-system-type-is-darwin)
 (custom-set-faces
- '(default ((t (:family "JetBrainsMono Nerd Font" :foundry "JB" :slant normal :weight regular :height 150 :width normal)))))
+ '(default ((t (:family "JetBrainsMono Nerd Font" :foundry "JB" :slant normal :weight regular :height 140 :width normal)))))
 ) (t
     (custom-set-faces
       '(default ((t (:family "JetBrainsMono Nerd Font" :foundry "JB" :slant normal :weight regular :height 120 :width normal)))))
@@ -317,4 +309,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "JetBrainsMono Nerd Font" :foundry "JB" :slant normal :weight regular :height 150 :width normal)))))
+ '(default ((t (:family "JetBrainsMono Nerd Font" :foundry "JB" :slant normal :weight regular :height 140 :width normal)))))
